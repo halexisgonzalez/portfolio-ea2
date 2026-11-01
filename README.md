@@ -28,10 +28,10 @@ src/
 ├── data/           # Datos académicos (un JSON por año) + capa de agregación (index.ts)
 ├── types/          # Modelo de datos tipado (Student, Project, AcademicYearData...)
 ├── utils/          # Búsqueda, filtros, formateo de texto, colores de categoría
-├── config/         # Configuración del sitio (nombre, link al repo) — no es dato académico
+├── config/         # Sitio, institución, materia, docentes y etapas del TFI (site.ts)
 └── styles/         # Tokens de diseño (tema claro/oscuro) y estilos globales
 
-public/             # Favicon, logo institucional, 404.html (fallback de rutas para GitHub Pages)
+public/             # Favicon, logos (UTN, Ingeniería Electrónica), fotos de docentes, 404.html (fallback de rutas para GitHub Pages)
 .github/workflows/  # Deploy automático a GitHub Pages
 ```
 
@@ -74,6 +74,29 @@ Para activarlo la primera vez:
 Si el repositorio se llama distinto a `portfolio-ea2`, actualizar el `base` en [`vite.config.ts`](vite.config.ts) para que coincida.
 
 > El proyecto no usa un dominio personalizado por defecto. Si más adelante configurás uno, el `base` de Vite puede volver a `/`.
+
+## Información de la materia y docentes
+
+Todo lo que no es dato de una cohorte vive en [`src/config/site.ts`](src/config/site.ts):
+
+- `courseInfo`: nivel, régimen, carga horaria, resumen, contenidos mínimos, objetivos y links al programa (PDF) y a la página de la materia en el [Departamento de Ingeniería Electrónica](https://dptoelectronica.frc.utn.edu.ar/electronica/materia/27-electronica-aplicada-ii/).
+- `teachers`: equipo docente. Cada docente tiene `name`, `title` (por ejemplo `Ing.` o `Mg. Ing.`) y `photo`.
+- `tfiSteps`: etapas del Trabajo Final Integrador, según el reglamento de la cátedra.
+
+Se muestran en la página `/materia` y en la home.
+
+### Agregar o cambiar un docente
+
+1. Guardar la foto en `public/images/docentes/<nombre-apellido>.jpg`, recortada en formato vertical 4:5 (por ejemplo 640×800 px) y comprimida (menos de ~150 KB).
+2. Agregar la entrada en `teachers`:
+
+```ts
+{
+  name: 'Nombre Apellido',
+  title: 'Ing.',
+  photo: 'images/docentes/nombre-apellido.jpg',
+}
+```
 
 ## Agregar una nueva cohorte
 
