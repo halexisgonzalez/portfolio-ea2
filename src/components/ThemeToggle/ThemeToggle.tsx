@@ -33,10 +33,10 @@ export function ThemeToggle() {
     >
       <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
         {isLight ? (
-          <path
-            fill="currentColor"
-            d="M12 4V2m0 20v-2m8-8h2M2 12h2m14.24 6.24 1.42 1.42M4.34 4.34l1.42 1.42m0 12.48-1.42 1.42m14.24-14.24-1.42 1.42M12 17a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z"
-          />
+          <g fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            <circle cx="12" cy="12" r="4" fill="currentColor" />
+            <path d="M12 3v1.5m0 15V21m9-9h-1.5M4.5 12H3m15.36 6.36-1.06-1.06M6.7 6.7 5.64 5.64m12.72 0L17.3 6.7M6.7 17.3l-1.06 1.06" />
+          </g>
         ) : (
           <path
             fill="currentColor"
