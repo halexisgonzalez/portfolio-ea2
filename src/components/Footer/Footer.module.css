@@ -84,6 +84,12 @@
   margin-bottom: var(--space-3);
 }
 
+.role {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-faint);
+}
+
 .column a {
   transition: color var(--transition-fast);
 }

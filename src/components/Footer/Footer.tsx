@@ -53,6 +53,7 @@ export function Footer() {
             {teachers.map((teacher) => (
               <li key={teacher.name}>
                 {teacher.title} {teacher.name}
+                <span className={styles.role}>{teacher.role}</span>
               </li>
             ))}
             <li>

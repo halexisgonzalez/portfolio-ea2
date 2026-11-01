@@ -65,26 +65,31 @@ export interface Teacher {
   name: string;
   /** Academic title, e.g. "Ing." or "Mg. Ing.". */
   title: string;
+  /** Position in the course, e.g. "Profesor Adjunto". */
+  role: string;
   /** Path relative to `public/`. */
   photo: string;
 }
 
-/** Teaching staff, listed alphabetically by surname. */
+/** Teaching staff, by position and then alphabetically by surname. */
 export const teachers: Teacher[] = [
+  {
+    name: 'Carlos Enrique Olmos',
+    title: 'Mg. Ing.',
+    role: 'Profesor Adjunto',
+    photo: 'images/docentes/carlos-enrique-olmos.jpg',
+  },
   {
     name: 'Hernando Alexis González',
     title: 'Ing.',
+    role: 'Jefe de Trabajos Prácticos',
     photo: 'images/docentes/hernando-alexis-gonzalez.jpg',
   },
   {
     name: 'Pablo Gabriel Miklosa',
     title: 'Ing.',
+    role: 'Jefe de Trabajos Prácticos',
     photo: 'images/docentes/pablo-gabriel-miklosa.jpg',
-  },
-  {
-    name: 'Carlos Enrique Olmos',
-    title: 'Mg. Ing.',
-    photo: 'images/docentes/carlos-enrique-olmos.jpg',
   },
 ];
 

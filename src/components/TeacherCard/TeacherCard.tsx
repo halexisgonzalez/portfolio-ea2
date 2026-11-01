@@ -21,6 +21,7 @@ export function TeacherCard({ teacher }: TeacherCardProps) {
       <div className={styles.info}>
         <span className={styles.title}>{teacher.title}</span>
         <h3 className={styles.name}>{teacher.name}</h3>
+        <p className={styles.role}>{teacher.role}</p>
       </div>
     </article>
   );
