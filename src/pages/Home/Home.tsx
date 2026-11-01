@@ -6,6 +6,7 @@ import { TeacherCard } from '../../components/TeacherCard/TeacherCard';
 import { YearCard } from '../../components/YearCard/YearCard';
 import { courseInfo, institution, teachers, tfiSteps } from '../../config/site';
 import { getFeaturedProjects, getYear, getYearStats, getPortfolioStats } from '../../data';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import styles from './Home.module.css';
 
 const STAT_LABELS: Record<keyof ReturnType<typeof getPortfolioStats>, string> = {
@@ -16,6 +17,8 @@ const STAT_LABELS: Record<keyof ReturnType<typeof getPortfolioStats>, string> = 
 };
 
 export function Home() {
+  useDocumentTitle();
+
   const stats = getPortfolioStats();
   const featuredProjects = getFeaturedProjects();
   const yearStats = getYearStats();

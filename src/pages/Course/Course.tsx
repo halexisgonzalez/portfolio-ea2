@@ -1,5 +1,6 @@
 import { TeacherCard } from '../../components/TeacherCard/TeacherCard';
 import { courseInfo, department, teachers, tfiSteps } from '../../config/site';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import styles from './Course.module.css';
 
 const FACTS = [
@@ -10,6 +11,8 @@ const FACTS = [
 ];
 
 export function Course() {
+  useDocumentTitle('La materia');
+
   return (
     <>
       <section className={`bg-grid ${styles.hero}`}>

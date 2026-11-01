@@ -5,12 +5,29 @@ type Theme = 'light' | 'dark';
 
 const STORAGE_KEY = 'portfolio-ea2:theme';
 
+// localStorage can throw (private mode, blocked site data), so every access is guarded.
+function readStoredTheme(): Theme | null {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    return stored === 'light' || stored === 'dark' ? stored : null;
+  } catch {
+    return null;
+  }
+}
+
+function storeTheme(theme: Theme) {
+  try {
+    localStorage.setItem(STORAGE_KEY, theme);
+  } catch {
+    // Not persisted; the choice still applies for this visit.
+  }
+}
+
 function getInitialTheme(): Theme {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === 'light' || stored === 'dark') return stored;
-  return window.matchMedia('(prefers-color-scheme: light)').matches
-    ? 'light'
-    : 'dark';
+  return (
+    readStoredTheme() ??
+    (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+  );
 }
 
 export function ThemeToggle() {
@@ -18,8 +35,14 @@ export function ThemeToggle() {
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem(STORAGE_KEY, theme);
   }, [theme]);
+
+  const toggleTheme = () => {
+    const next = theme === 'light' ? 'dark' : 'light';
+    setTheme(next);
+    // Only an explicit choice is saved, so the OS preference keeps working otherwise.
+    storeTheme(next);
+  };
 
   const isLight = theme === 'light';
 
@@ -27,7 +50,7 @@ export function ThemeToggle() {
     <button
       type="button"
       className={styles.toggle}
-      onClick={() => setTheme(isLight ? 'dark' : 'light')}
+      onClick={toggleTheme}
       aria-label={isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro'}
       title={isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro'}
     >

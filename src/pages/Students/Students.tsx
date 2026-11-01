@@ -3,10 +3,12 @@ import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { StudentCard } from '../../components/StudentCard/StudentCard';
 import { getAllStudents } from '../../data';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { filterStudentsByName } from '../../utils/projectFilters';
 import styles from './Students.module.css';
 
 export function Students() {
+  useDocumentTitle('Estudiantes');
   const [query, setQuery] = useState('');
   const allStudents = useMemo(() => getAllStudents(), []);
   const filteredStudents = useMemo(

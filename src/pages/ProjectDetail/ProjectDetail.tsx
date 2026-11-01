@@ -1,13 +1,16 @@
 import { Link, useParams } from 'react-router-dom';
 import { CategoryBadge } from '../../components/CategoryBadge/CategoryBadge';
+import { ProjectArt } from '../../components/ProjectArt/ProjectArt';
 import { TechnologyBadge } from '../../components/TechnologyBadge/TechnologyBadge';
 import { getProjectById, getStudentsForProject } from '../../data';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { NotFound } from '../NotFound/NotFound';
 import styles from './ProjectDetail.module.css';
 
 export function ProjectDetail() {
   const { projectId } = useParams<{ projectId: string }>();
   const project = projectId ? getProjectById(projectId) : undefined;
+  useDocumentTitle(project?.name ?? 'Proyecto no encontrado');
 
   if (!project) {
     return (
@@ -27,14 +30,7 @@ export function ProjectDetail() {
           {project.image ? (
             <img src={project.image} alt="" />
           ) : (
-            <span className={styles.placeholder} aria-hidden="true">
-              <svg viewBox="0 0 24 24" width="48" height="48">
-                <path
-                  fill="currentColor"
-                  d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v10h14V7Zm2.5 8 3-3.5 2 2 3-4 3.5 5.5Z"
-                />
-              </svg>
-            </span>
+            <ProjectArt project={project} size="large" />
           )}
         </div>
 

@@ -99,6 +99,19 @@ Se muestran en la página `/materia` y en la home.
 }
 ```
 
+## Links filtrados a proyectos
+
+Los filtros de `/projects` viven en la URL, así que una vista filtrada se puede compartir o guardar como marcador, y se conserva al volver desde el detalle de un proyecto:
+
+| Parámetro | Ejemplo |
+|---|---|
+| `categoria` | `/projects?categoria=Fuentes%20de%20alimentaci%C3%B3n` |
+| `anio` | `/projects?anio=2026` |
+| `tecnologia` | `/projects?tecnologia=LTspice` |
+| `q` (búsqueda libre) | `/projects?q=amplificador` |
+
+Se pueden combinar.
+
 ## Agregar una nueva cohorte
 
 Crear `src/data/2027.json` (mismo formato que [`src/data/2026.json`](src/data/2026.json)):

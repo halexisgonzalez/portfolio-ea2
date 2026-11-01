@@ -1,14 +1,29 @@
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { ProjectCard } from '../../components/ProjectCard/ProjectCard';
 import { ProjectFilters } from '../../components/ProjectFilters/ProjectFilters';
 import { SearchInput } from '../../components/SearchInput/SearchInput';
 import { getAllCategoriesInUse, getAllProjects, getAllTechnologies } from '../../data';
-import { defaultProjectFilters, filterProjects } from '../../utils/projectFilters';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
+import {
+  defaultProjectFilters,
+  filterProjects,
+  filtersFromSearchParams,
+  filtersToSearchParams,
+  type ProjectFilterState,
+} from '../../utils/projectFilters';
 import styles from './Projects.module.css';
 
 export function Projects() {
-  const [filters, setFilters] = useState(defaultProjectFilters);
+  useDocumentTitle('Proyectos');
+
+  // Filters live in the URL so a filtered view can be shared and is kept
+  // when coming back from a project's page.
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filters = useMemo(() => filtersFromSearchParams(searchParams), [searchParams]);
+  const setFilters = (next: ProjectFilterState) =>
+    setSearchParams(filtersToSearchParams(next), { replace: true });
 
   const allProjects = useMemo(() => getAllProjects(), []);
   const categories = useMemo(() => getAllCategoriesInUse(), []);

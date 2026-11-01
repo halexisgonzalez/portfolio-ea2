@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom';
 import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { ProjectCard } from '../../components/ProjectCard/ProjectCard';
 import { getProjectsForStudent, getStudentById } from '../../data';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { NotFound } from '../NotFound/NotFound';
 import styles from './StudentProfile.module.css';
 
@@ -17,6 +18,7 @@ function getInitials(name: string): string {
 export function StudentProfile() {
   const { studentId } = useParams<{ studentId: string }>();
   const student = studentId ? getStudentById(studentId) : undefined;
+  useDocumentTitle(student?.name ?? 'Estudiante no encontrado');
 
   if (!student) {
     return (

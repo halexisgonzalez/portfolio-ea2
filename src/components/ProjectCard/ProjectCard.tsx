@@ -3,6 +3,7 @@ import { getStudentsForProject } from '../../data';
 import type { Project } from '../../types/portfolio';
 import { joinNames } from '../../utils/format';
 import { CategoryBadge } from '../CategoryBadge/CategoryBadge';
+import { ProjectArt } from '../ProjectArt/ProjectArt';
 import { TechnologyBadge } from '../TechnologyBadge/TechnologyBadge';
 import styles from './ProjectCard.module.css';
 
@@ -19,18 +20,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.image ? (
           <img src={project.image} alt="" loading="lazy" />
         ) : (
-          <span className={`bg-grid ${styles.placeholder}`} aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="44" height="44">
-              <path
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                d="M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 0V2m3 3V2m3 3V2M9 22v-3m3 3v-3m3 3v-3M5 9H2m3 3H2m3 3H2m20-6h-3m3 3h-3m3 3h-3"
-              />
-              <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
-            </svg>
-          </span>
+          <ProjectArt project={project} />
         )}
         {project.featured ? <span className={styles.featuredTag}>Destacado</span> : null}
       </Link>

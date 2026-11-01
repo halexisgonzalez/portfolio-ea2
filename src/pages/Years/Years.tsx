@@ -1,9 +1,11 @@
 import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { YearCard } from '../../components/YearCard/YearCard';
 import { getYear, getYearStats } from '../../data';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import styles from './Years.module.css';
 
 export function Years() {
+  useDocumentTitle('Cohortes');
   const yearStats = getYearStats();
 
   return (
@@ -33,7 +35,7 @@ export function Years() {
         ) : (
           <EmptyState
             title="Todavía no hay cohortes cargadas"
-            description="Agregá un archivo en src/data (por ejemplo 2027.json) para que aparezca acá."
+            description="Agregá un archivo en src/data (por ejemplo 2026.json) para que aparezca acá."
           />
         )}
       </div>

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import styles from './NotFound.module.css';
 
 interface NotFoundProps {
@@ -10,6 +11,8 @@ export function NotFound({
   title = 'Página no encontrada',
   description = 'El contenido que buscás no existe o fue movido.',
 }: NotFoundProps) {
+  useDocumentTitle(title);
+
   return (
     <section className={`section ${styles.section}`}>
       <div className={`container ${styles.content}`}>

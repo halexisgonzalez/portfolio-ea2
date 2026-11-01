@@ -3,6 +3,7 @@ import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { ProjectCard } from '../../components/ProjectCard/ProjectCard';
 import { StudentCard } from '../../components/StudentCard/StudentCard';
 import { getYear } from '../../data';
+import { useDocumentTitle } from '../../hooks/useDocumentTitle';
 import { pluralize } from '../../utils/format';
 import { NotFound } from '../NotFound/NotFound';
 import styles from './Year.module.css';
@@ -11,6 +12,7 @@ export function Year() {
   const { year: yearParam } = useParams<{ year: string }>();
   const year = yearParam ? Number(yearParam) : NaN;
   const yearData = Number.isFinite(year) ? getYear(year) : undefined;
+  useDocumentTitle(yearData ? `Cohorte ${yearData.year}` : 'Cohorte no encontrada');
 
   if (!yearData) {
     return (

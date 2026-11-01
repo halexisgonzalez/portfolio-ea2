@@ -19,6 +19,19 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap"
     />
 
+    <script type="text/javascript">
+      // Applies the saved theme before the first paint, so a light-theme user
+      // never sees a flash of the dark default. Keep the key in sync with ThemeToggle.
+      (function () {
+        try {
+          var theme = localStorage.getItem('portfolio-ea2:theme');
+          if (theme === 'light' || theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', theme);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Portfolio Académico de Electrónica Aplicada II" />
     <meta
