@@ -175,6 +175,13 @@
   font-size: 0.9375rem;
 }
 
+.teachersGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+  max-width: 960px;
+}
+
 .projectsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

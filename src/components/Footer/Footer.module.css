@@ -39,6 +39,17 @@
   gap: var(--space-4);
 }
 
+.logos {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.departmentLogo {
+  height: 68px;
+  width: auto;
+}
+
 .logoBadge {
   display: inline-flex;
   align-items: center;

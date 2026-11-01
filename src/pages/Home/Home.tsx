@@ -2,8 +2,9 @@ import { Link } from 'react-router-dom';
 import { EmptyState } from '../../components/EmptyState/EmptyState';
 import { Oscilloscope } from '../../components/Oscilloscope/Oscilloscope';
 import { ProjectCard } from '../../components/ProjectCard/ProjectCard';
+import { TeacherCard } from '../../components/TeacherCard/TeacherCard';
 import { YearCard } from '../../components/YearCard/YearCard';
-import { courseInfo, institution, tfiSteps } from '../../config/site';
+import { courseInfo, institution, teachers, tfiSteps } from '../../config/site';
 import { getFeaturedProjects, getYear, getYearStats, getPortfolioStats } from '../../data';
 import styles from './Home.module.css';
 
@@ -88,6 +89,29 @@ export function Home() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">Cátedra</span>
+              <h2>Equipo docente</h2>
+              <p>
+                {courseInfo.level} de {courseInfo.program} · régimen {courseInfo.regime.toLowerCase()}.
+              </p>
+            </div>
+            <Link to="/materia" className="btn btn-secondary btn-small">
+              Conocé la materia
+            </Link>
+          </div>
+
+          <div className={styles.teachersGrid}>
+            {teachers.map((teacher) => (
+              <TeacherCard key={teacher.name} teacher={teacher} />
+            ))}
+          </div>
         </div>
       </section>
 

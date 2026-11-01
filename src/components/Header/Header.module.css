@@ -22,15 +22,9 @@
 }
 
 .brandMark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, var(--color-accent), #2a4bd0 55%, var(--color-accent-2));
-  color: #ffffff;
-  box-shadow: 0 6px 16px -6px var(--color-accent);
+  width: auto;
+  height: 40px;
+  filter: drop-shadow(0 4px 10px rgba(242, 165, 65, 0.25));
   transition: transform var(--transition-base);
 }
 

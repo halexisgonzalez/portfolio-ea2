@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Layout } from './components/Layout/Layout';
+import { Course } from './pages/Course/Course';
 import { Home } from './pages/Home/Home';
 import { NotFound } from './pages/NotFound/NotFound';
 import { ProjectDetail } from './pages/ProjectDetail/ProjectDetail';
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
+          <Route path="materia" element={<Course />} />
           <Route path="projects" element={<Projects />} />
           <Route path="projects/:projectId" element={<ProjectDetail />} />
           <Route path="students" element={<Students />} />

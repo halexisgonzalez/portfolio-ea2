@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { courseInfo, institution, siteConfig } from '../../config/site';
+import { courseInfo, department, institution, siteConfig } from '../../config/site';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 import styles from './Header.module.css';
 
@@ -9,6 +9,7 @@ const NAV_LINKS = [
   { to: '/projects', label: 'Proyectos' },
   { to: '/students', label: 'Estudiantes' },
   { to: '/years', label: 'Cohortes' },
+  { to: '/materia', label: 'La materia' },
 ];
 
 export function Header() {
@@ -23,19 +24,13 @@ export function Header() {
     <header className={styles.header}>
       <div className={`container ${styles.bar}`}>
         <NavLink to="/" className={styles.brand}>
-          <span className={styles.brandMark} aria-hidden="true">
-            {/* Op-amp symbol. */}
-            <svg viewBox="0 0 24 24" width="20" height="20">
-              <path
-                d="M6 4v16l13-8Z M2 8.5h4 M2 15.5h4 M19 12h3 M8 8.5h2.4 M8 15.5h2.4 M9.2 14.3v2.4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+          <img
+            className={styles.brandMark}
+            src={`${import.meta.env.BASE_URL}${department.logo}`}
+            alt=""
+            width={320}
+            height={259}
+          />
           <span className={styles.brandText}>
             <span className={styles.brandName}>{siteConfig.name}</span>
             <span className={styles.brandSub}>{courseInfo.subject}</span>
