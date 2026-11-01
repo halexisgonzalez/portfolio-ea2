@@ -6,12 +6,13 @@ import type { ProjectCategory } from '../types/portfolio';
  */
 const CATEGORY_COLORS: Record<ProjectCategory, string> = {
   'Amplificadores realimentados': '#7c8cff',
+  'Amplificadores operacionales': '#35d0c9',
   'Amplificadores de potencia': '#fb7185',
   Osciladores: '#a78bfa',
-  'Filtros activos': '#35d0c9',
+  'Filtros activos': '#2dd4bf',
   'Fuentes de alimentación': '#f6ad55',
+  'Circuitos integrados analógicos': '#60a5fa',
   Audio: '#e879f9',
-  Radiofrecuencia: '#60a5fa',
   Instrumentación: '#4ade80',
   Otros: '#9ba0b4',
 };

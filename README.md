@@ -166,7 +166,7 @@ Dentro del `projects` del año correspondiente:
 
 - No hace falta indicar `year` en el proyecto: se toma automáticamente del año del archivo (`2027.json` → todos sus proyectos son de 2027).
 - `studentIds` puede tener más de un id (proyectos grupales).
-- `categories` es una lista con una o más de: `Amplificadores realimentados`, `Amplificadores de potencia`, `Osciladores`, `Filtros activos`, `Fuentes de alimentación`, `Audio`, `Radiofrecuencia`, `Instrumentación`, `Otros`. La lista vive en [`src/types/portfolio.ts`](src/types/portfolio.ts) y el color de cada una en [`src/utils/categoryColors.ts`](src/utils/categoryColors.ts).
+- `categories` es una lista con una o más de: `Amplificadores realimentados`, `Amplificadores operacionales`, `Amplificadores de potencia`, `Osciladores`, `Filtros activos`, `Fuentes de alimentación`, `Circuitos integrados analógicos`, `Audio`, `Instrumentación`, `Otros`. La lista vive en [`src/types/portfolio.ts`](src/types/portfolio.ts) y el color de cada una en [`src/utils/categoryColors.ts`](src/utils/categoryColors.ts).
 - `repository`, `demo` e `image` son opcionales: si no existen (o son `null`), la interfaz simplemente no muestra ese botón/imagen — no hace falta dejarlos vacíos.
 - `featured: true` hace que el proyecto aparezca en la sección "Proyectos destacados" de la home.
 

@@ -6,12 +6,13 @@
 
 export const PROJECT_CATEGORIES = [
   'Amplificadores realimentados',
+  'Amplificadores operacionales',
   'Amplificadores de potencia',
   'Osciladores',
   'Filtros activos',
   'Fuentes de alimentación',
+  'Circuitos integrados analógicos',
   'Audio',
-  'Radiofrecuencia',
   'Instrumentación',
   'Otros',
 ] as const;
