@@ -10,6 +10,7 @@ export function Years() {
     <section className="section">
       <div className="container">
         <div className={styles.header}>
+          <span className="eyebrow">Historial</span>
           <h1>Cohortes</h1>
           <p className="text-muted">
             El portfolio crece cada año. Elegí una cohorte para ver sus

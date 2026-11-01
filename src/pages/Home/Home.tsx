@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { EmptyState } from '../../components/EmptyState/EmptyState';
+import { Oscilloscope } from '../../components/Oscilloscope/Oscilloscope';
 import { ProjectCard } from '../../components/ProjectCard/ProjectCard';
 import { YearCard } from '../../components/YearCard/YearCard';
+import { courseInfo, institution, tfiSteps } from '../../config/site';
 import { getFeaturedProjects, getYear, getYearStats, getPortfolioStats } from '../../data';
 import styles from './Home.module.css';
 
@@ -19,32 +21,45 @@ export function Home() {
 
   return (
     <>
-      <section className={styles.hero}>
+      <section className={`bg-grid ${styles.hero}`}>
         <div className={`container ${styles.heroInner}`}>
-          <span className="eyebrow">Portfolio académico</span>
-          <h1 className={styles.heroTitle}>
-            Portfolio Académico de Electrónica Aplicada II
-          </h1>
-          <p className={styles.heroSubtitle}>
-            Trabajos Finales Integradores diseñados, construidos y medidos por
-            estudiantes a lo largo de las distintas cohortes.
-          </p>
-          <div className={styles.heroActions}>
-            <Link to="/projects" className="btn btn-primary">
-              Explorar proyectos
-            </Link>
-            <Link to="/students" className="btn btn-secondary">
-              Ver estudiantes
-            </Link>
+          <div className={styles.heroText}>
+            <span className={styles.heroBadge}>
+              <span className={styles.heroBadgeDot} aria-hidden="true" />
+              {courseInfo.program} · {institution.name}
+            </span>
+            <h1 className={styles.heroTitle}>
+              Portfolio Académico de{' '}
+              <span className={styles.heroHighlight}>Electrónica Aplicada II</span>
+            </h1>
+            <p className={styles.heroSubtitle}>
+              Trabajos Finales Integradores diseñados, construidos y medidos por
+              estudiantes a lo largo de las distintas cohortes.
+            </p>
+            <div className={styles.heroActions}>
+              <Link to="/projects" className="btn btn-primary">
+                Explorar proyectos
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path fill="currentColor" d="M13.2 5.3 19.9 12l-6.7 6.7-1.4-1.4 4.3-4.3H4v-2h12.1l-4.3-4.3Z" />
+                </svg>
+              </Link>
+              <Link to="/students" className="btn btn-secondary">
+                Ver estudiantes
+              </Link>
+            </div>
+          </div>
+
+          <div className={styles.heroVisual}>
+            <Oscilloscope />
           </div>
         </div>
       </section>
 
-      <section className="section">
+      <section className={styles.statsSection}>
         <div className={`container ${styles.statsGrid}`}>
           {(Object.keys(STAT_LABELS) as (keyof typeof STAT_LABELS)[]).map((key) => (
             <div key={key} className={`card ${styles.statCard}`}>
-              <span className={styles.statValue}>{stats[key]}</span>
+              <span className={styles.statValue}>{String(stats[key]).padStart(2, '0')}</span>
               <span className={styles.statLabel}>{STAT_LABELS[key]}</span>
             </div>
           ))}
@@ -55,6 +70,32 @@ export function Home() {
         <div className="container">
           <div className="section-heading">
             <div>
+              <span className="eyebrow">El TFI</span>
+              <h2>Del preproyecto al laboratorio</h2>
+              <p>
+                {courseInfo.subject} es la materia integradora: cada trabajo final es un
+                dispositivo real, funcionando.
+              </p>
+            </div>
+          </div>
+
+          <ol className={styles.steps}>
+            {tfiSteps.map((step, index) => (
+              <li key={step.title} className={`card ${styles.step}`}>
+                <span className={styles.stepNumber}>{String(index + 1).padStart(2, '0')}</span>
+                <h3 className={styles.stepTitle}>{step.title}</h3>
+                <p className={styles.stepDescription}>{step.description}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="section-heading">
+            <div>
+              <span className="eyebrow">Proyectos</span>
               <h2>Proyectos destacados</h2>
               <p>Una selección de trabajos sobresalientes de nuestras cohortes.</p>
             </div>
@@ -82,8 +123,9 @@ export function Home() {
         <div className="container">
           <div className="section-heading">
             <div>
-              <h2>Cohortes</h2>
-              <p>Explorá el portfolio histórico año a año.</p>
+              <span className="eyebrow">Cohortes</span>
+              <h2>Año a año</h2>
+              <p>Explorá el portfolio histórico de cada cohorte.</p>
             </div>
           </div>
 

@@ -1,12 +1,18 @@
 .header {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-2);
   margin-bottom: var(--space-6);
 }
 
 .header h1 {
-  font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  font-size: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.header p {
+  max-width: 60ch;
 }
 
 .controls {

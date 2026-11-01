@@ -7,6 +7,7 @@
   padding: var(--space-8) var(--space-5);
   border: 1px dashed var(--color-border-strong);
   border-radius: var(--radius-lg);
+  background-color: var(--color-bg-elevated);
   color: var(--color-text-muted);
 }
 
@@ -16,8 +17,9 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   background: var(--color-accent-soft);
+  border: 1px solid var(--color-border-strong);
   color: var(--color-accent-strong);
 }
 

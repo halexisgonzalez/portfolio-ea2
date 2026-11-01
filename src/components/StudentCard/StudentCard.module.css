@@ -28,9 +28,11 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-full);
-  background: var(--color-accent-soft);
-  color: var(--color-accent-strong);
+  background: linear-gradient(135deg, var(--color-accent), #2a4bd0 60%, var(--color-accent-2));
+  color: #ffffff;
+  font-family: var(--font-display);
   font-weight: 700;
+  letter-spacing: 0.02em;
   flex-shrink: 0;
 }
 

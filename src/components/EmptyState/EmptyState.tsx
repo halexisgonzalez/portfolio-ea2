@@ -9,12 +9,15 @@ interface EmptyStateProps {
 
 export function EmptyState({ title, description, action }: EmptyStateProps) {
   return (
-    <div className={styles.empty} role="status">
+    <div className={`bg-grid ${styles.empty}`} role="status">
       <div className={styles.icon} aria-hidden="true">
         <svg viewBox="0 0 24 24" width="28" height="28">
           <path
-            fill="currentColor"
-            d="M12 2 2 7v10l10 5 10-5V7Zm0 2.24 6.91 3.46L12 11.15 5.09 7.7Zm-7 4.53 6 3v6.63l-6-3Zm8 9.63v-6.63l6-3v6.63Z"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            d="M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 0V2m3 3V2m3 3V2M9 22v-3m3 3v-3m3 3v-3M5 9H2m3 3H2m3 3H2m20-6h-3m3 3h-3m3 3h-3"
           />
         </svg>
       </div>

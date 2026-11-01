@@ -17,10 +17,7 @@
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
+  gap: var(--space-3);
   white-space: nowrap;
 }
 
@@ -28,13 +25,37 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
-  color: #0a0c12;
-  font-size: 0.75rem;
-  font-weight: 800;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--color-accent), #2a4bd0 55%, var(--color-accent-2));
+  color: #ffffff;
+  box-shadow: 0 6px 16px -6px var(--color-accent);
+  transition: transform var(--transition-base);
+}
+
+.brand:hover .brandMark {
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.brandName {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+.brandSub {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-faint);
+  letter-spacing: 0.02em;
 }
 
 .nav {
@@ -63,8 +84,9 @@
 }
 
 .navLinkActive {
-  color: var(--color-text);
+  color: var(--color-accent-strong);
   background: var(--color-accent-soft);
+  font-weight: 600;
 }
 
 .actions {
@@ -74,10 +96,10 @@
 }
 
 .institutionLogo {
-  display: inline-flex;
+  display: none;
   align-items: center;
-  height: 38px;
-  padding: 0 var(--space-2);
+  height: 40px;
+  padding: 0 var(--space-3);
   border-radius: var(--radius-sm);
   background: #ffffff;
   border: 1px solid var(--color-border);
@@ -85,8 +107,14 @@
 }
 
 .institutionLogo img {
-  height: 26px;
+  height: 28px;
   width: auto;
+}
+
+@media (min-width: 560px) {
+  .institutionLogo {
+    display: inline-flex;
+  }
 }
 
 .githubLink {
@@ -108,6 +136,12 @@
 @media (min-width: 860px) {
   .githubLink {
     display: inline-flex;
+  }
+}
+
+@media (max-width: 1023px) {
+  .brandSub {
+    display: none;
   }
 }
 

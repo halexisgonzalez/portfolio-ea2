@@ -1,40 +1,56 @@
-/* Design tokens. Dark theme is the default; light theme overrides below. */
+/*
+ * Design tokens. Dark theme is the default; light theme overrides below.
+ * Palette: UTN institutional blue as the primary accent, PCB copper as the
+ * secondary one.
+ */
 
 :root {
   color-scheme: dark;
 
-  --color-bg: #0a0c12;
-  --color-bg-elevated: #12151f;
-  --color-bg-elevated-hover: #181c29;
-  --color-border: #232838;
-  --color-border-strong: #333a4d;
+  --color-bg: #080d1c;
+  --color-bg-elevated: #0f1630;
+  --color-bg-elevated-hover: #151e3d;
+  --color-border: #1d2748;
+  --color-border-strong: #2b3964;
 
-  --color-text: #e7e9f0;
-  --color-text-muted: #9ba0b4;
-  --color-text-faint: #6b7086;
+  --color-text: #e8ecf7;
+  --color-text-muted: #9ca6c4;
+  --color-text-faint: #6a7493;
 
-  --color-accent: #7c8cff;
-  --color-accent-strong: #a7b1ff;
-  --color-accent-contrast: #0a0c12;
-  --color-accent-soft: rgba(124, 140, 255, 0.13);
+  --color-accent: #6d8bff;
+  --color-accent-strong: #a0b3ff;
+  --color-accent-contrast: #060b1f;
+  --color-accent-soft: rgba(109, 139, 255, 0.14);
 
-  --color-accent-2: #35d0c9;
-  --color-accent-2-soft: rgba(53, 208, 201, 0.13);
+  --color-accent-2: #f2a541;
+  --color-accent-2-strong: #ffc278;
+  --color-accent-2-soft: rgba(242, 165, 65, 0.14);
 
   --color-danger: #f87171;
 
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.35);
+  /* Perfboard dot grid used as a subtle background texture. */
+  --grid-dot: rgba(160, 179, 255, 0.1);
+
+  /* Oscilloscope screen: always dark, in both themes. */
+  --scope-bg: #050a17;
+  --scope-grid: rgba(160, 179, 255, 0.12);
+  --scope-ch1: #f2a541;
+  --scope-ch2: #6d8bff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 14px 36px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 0 1px var(--color-accent-soft), 0 18px 40px -12px rgba(109, 139, 255, 0.35);
 
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-lg: 18px;
   --radius-full: 999px;
 
   --font-sans:
-    system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
+    'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial,
     sans-serif;
-  --font-mono: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  --font-display: 'Space Grotesk', var(--font-sans);
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Consolas, monospace;
 
   --container-width: 1180px;
 
@@ -46,6 +62,7 @@
   --space-6: 32px;
   --space-7: 48px;
   --space-8: 64px;
+  --space-9: 96px;
 
   --transition-fast: 150ms ease;
   --transition-base: 220ms ease;
@@ -54,49 +71,57 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme='dark']) {
     color-scheme: light;
-    --color-bg: #f7f7fb;
+    --color-bg: #f4f6fc;
     --color-bg-elevated: #ffffff;
-    --color-bg-elevated-hover: #eef0f7;
-    --color-border: #e3e4ec;
-    --color-border-strong: #cdd0de;
+    --color-bg-elevated-hover: #edf1fb;
+    --color-border: #dde3f1;
+    --color-border-strong: #c4cee6;
 
-    --color-text: #14161f;
-    --color-text-muted: #52566b;
-    --color-text-faint: #767b8f;
+    --color-text: #0d1430;
+    --color-text-muted: #485374;
+    --color-text-faint: #6b7594;
 
-    --color-accent: #4750d6;
-    --color-accent-strong: #383fb8;
+    --color-accent: #1b3aa6;
+    --color-accent-strong: #142c80;
     --color-accent-contrast: #ffffff;
-    --color-accent-soft: rgba(71, 80, 214, 0.08);
+    --color-accent-soft: rgba(27, 58, 166, 0.08);
 
-    --color-accent-2: #0f8f88;
-    --color-accent-2-soft: rgba(15, 143, 136, 0.08);
+    --color-accent-2: #b45f06;
+    --color-accent-2-strong: #8f4a02;
+    --color-accent-2-soft: rgba(180, 95, 6, 0.1);
 
-    --shadow-sm: 0 1px 2px rgba(20, 22, 31, 0.06);
-    --shadow-md: 0 12px 32px rgba(20, 22, 31, 0.08);
+    --grid-dot: rgba(27, 58, 166, 0.11);
+
+    --shadow-sm: 0 1px 2px rgba(13, 20, 48, 0.06);
+    --shadow-md: 0 14px 36px rgba(13, 20, 48, 0.09);
+    --shadow-glow: 0 0 0 1px var(--color-accent-soft), 0 18px 40px -14px rgba(27, 58, 166, 0.28);
   }
 }
 
 :root[data-theme='light'] {
   color-scheme: light;
-  --color-bg: #f7f7fb;
+  --color-bg: #f4f6fc;
   --color-bg-elevated: #ffffff;
-  --color-bg-elevated-hover: #eef0f7;
-  --color-border: #e3e4ec;
-  --color-border-strong: #cdd0de;
+  --color-bg-elevated-hover: #edf1fb;
+  --color-border: #dde3f1;
+  --color-border-strong: #c4cee6;
 
-  --color-text: #14161f;
-  --color-text-muted: #52566b;
-  --color-text-faint: #767b8f;
+  --color-text: #0d1430;
+  --color-text-muted: #485374;
+  --color-text-faint: #6b7594;
 
-  --color-accent: #4750d6;
-  --color-accent-strong: #383fb8;
+  --color-accent: #1b3aa6;
+  --color-accent-strong: #142c80;
   --color-accent-contrast: #ffffff;
-  --color-accent-soft: rgba(71, 80, 214, 0.08);
+  --color-accent-soft: rgba(27, 58, 166, 0.08);
 
-  --color-accent-2: #0f8f88;
-  --color-accent-2-soft: rgba(15, 143, 136, 0.08);
+  --color-accent-2: #b45f06;
+  --color-accent-2-strong: #8f4a02;
+  --color-accent-2-soft: rgba(180, 95, 6, 0.1);
 
-  --shadow-sm: 0 1px 2px rgba(20, 22, 31, 0.06);
-  --shadow-md: 0 12px 32px rgba(20, 22, 31, 0.08);
+  --grid-dot: rgba(27, 58, 166, 0.11);
+
+  --shadow-sm: 0 1px 2px rgba(13, 20, 48, 0.06);
+  --shadow-md: 0 14px 36px rgba(13, 20, 48, 0.09);
+  --shadow-glow: 0 0 0 1px var(--color-accent-soft), 0 18px 40px -14px rgba(27, 58, 166, 0.28);
 }

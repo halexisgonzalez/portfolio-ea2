@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { institution, siteConfig } from '../../config/site';
+import { courseInfo, institution, siteConfig } from '../../config/site';
 import { ThemeToggle } from '../ThemeToggle/ThemeToggle';
 import styles from './Header.module.css';
 
@@ -24,9 +24,22 @@ export function Header() {
       <div className={`container ${styles.bar}`}>
         <NavLink to="/" className={styles.brand}>
           <span className={styles.brandMark} aria-hidden="true">
-            EA
+            {/* Op-amp symbol. */}
+            <svg viewBox="0 0 24 24" width="20" height="20">
+              <path
+                d="M6 4v16l13-8Z M2 8.5h4 M2 15.5h4 M19 12h3 M8 8.5h2.4 M8 15.5h2.4 M9.2 14.3v2.4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </span>
-          {siteConfig.name}
+          <span className={styles.brandText}>
+            <span className={styles.brandName}>{siteConfig.name}</span>
+            <span className={styles.brandSub}>{courseInfo.subject}</span>
+          </span>
         </NavLink>
 
         <nav
@@ -57,6 +70,8 @@ export function Header() {
               src={`${import.meta.env.BASE_URL}${institution.logo}`}
               alt={institution.name}
               title={institution.name}
+              width={800}
+              height={276}
             />
           </span>
           <a

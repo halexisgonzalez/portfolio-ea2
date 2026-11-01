@@ -1,43 +1,117 @@
 .hero {
   position: relative;
-  padding-block: var(--space-8) calc(var(--space-8) + var(--space-4));
-  background:
-    radial-gradient(circle at 15% 20%, var(--color-accent-soft), transparent 45%),
-    radial-gradient(circle at 85% 0%, var(--color-accent-2-soft), transparent 40%);
+  padding-block: var(--space-8) var(--space-9);
   border-bottom: 1px solid var(--color-border);
   overflow: hidden;
+  isolation: isolate;
+}
+
+/* Soft glows on top of the dot grid, fading the grid out towards the edges. */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 12% 18%, var(--color-accent-soft), transparent 42%),
+    radial-gradient(circle at 88% 30%, var(--color-accent-2-soft), transparent 38%),
+    linear-gradient(to bottom, transparent 55%, var(--color-bg));
 }
 
 .heroInner {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.heroText {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: var(--space-4);
-  max-width: 760px;
+  gap: var(--space-5);
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border-strong);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.heroBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background: var(--color-accent-2);
+  box-shadow: 0 0 0 3px var(--color-accent-2-soft);
+  flex-shrink: 0;
 }
 
 .heroTitle {
-  font-size: clamp(2rem, 1.5rem + 2.2vw, 3.25rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(2.25rem, 1.6rem + 2.8vw, 3.75rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+}
+
+.heroHighlight {
+  background: linear-gradient(100deg, var(--color-accent-strong), var(--color-accent) 45%, var(--color-accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .heroSubtitle {
-  font-size: clamp(1rem, 0.95rem + 0.3vw, 1.1875rem);
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
   color: var(--color-text-muted);
-  max-width: 56ch;
+  max-width: 50ch;
 }
 
 .heroActions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-3);
-  margin-top: var(--space-2);
+}
+
+.heroVisual {
+  width: 100%;
+  max-width: 520px;
+  justify-self: center;
+}
+
+@media (min-width: 960px) {
+  .heroInner {
+    grid-template-columns: 1.15fr 1fr;
+  }
+
+  .heroVisual {
+    justify-self: end;
+    transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
+  }
+}
+
+/* Stats overlap the bottom edge of the hero. */
+.statsSection {
+  position: relative;
+  margin-top: calc(var(--space-7) * -1);
 }
 
 .statsGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: var(--space-4);
+}
+
+@media (min-width: 720px) {
+  .statsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .statCard {
@@ -45,16 +119,58 @@
   flex-direction: column;
   gap: var(--space-1);
   padding: var(--space-5);
-  text-align: center;
+  box-shadow: var(--shadow-md);
 }
 
 .statValue {
+  font-family: var(--font-mono);
   font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
-  font-weight: 800;
-  color: var(--color-accent-strong);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-text);
 }
 
 .statLabel {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: var(--space-4);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5);
+  overflow: hidden;
+}
+
+/* A thin "trace" running along the top of each step card. */
+.step::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-2));
+  opacity: 0.85;
+}
+
+.stepNumber {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-accent-2);
+}
+
+.stepTitle {
+  font-size: 1.125rem;
+}
+
+.stepDescription {
   color: var(--color-text-muted);
   font-size: 0.9375rem;
 }

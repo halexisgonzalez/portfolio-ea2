@@ -1,65 +1,89 @@
 .footer {
-  border-top: 1px solid var(--color-border);
+  position: relative;
   margin-top: auto;
-  padding-block: var(--space-6);
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-elevated);
   color: var(--color-text-muted);
   font-size: 0.875rem;
 }
 
+/* Thin blue-to-copper "trace" along the top edge. */
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: -1px 0 auto 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent) 30%, var(--color-accent-2) 70%, transparent);
+  opacity: 0.7;
+}
+
 .top {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+@media (min-width: 760px) {
+  .top {
+    grid-template-columns: 1.6fr 1fr 1fr;
+  }
+}
+
+.institution {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
   gap: var(--space-4);
-  padding-bottom: var(--space-5);
-  margin-bottom: var(--space-5);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.institutionLine {
-  font-weight: 600;
-  color: var(--color-text);
-  margin-bottom: var(--space-1);
-}
-
-.courseLine {
-  font-size: 0.8125rem;
-}
-
-.courseLine a:hover {
-  color: var(--color-accent-strong);
 }
 
 .logoBadge {
   display: inline-flex;
   align-items: center;
-  padding: var(--space-2) var(--space-3);
-  border-radius: var(--radius-sm);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
   background: #ffffff;
   border: 1px solid var(--color-border);
-  flex-shrink: 0;
 }
 
 .logo {
-  height: 44px;
+  height: 52px;
   width: auto;
 }
 
-.inner {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
+.description {
+  max-width: 38ch;
 }
 
-.links {
+.column ul {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: var(--space-2);
 }
 
-.links a:hover {
+.columnTitle {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-faint);
+  margin-bottom: var(--space-3);
+}
+
+.column a {
+  transition: color var(--transition-fast);
+}
+
+.column a:hover {
   color: var(--color-accent-strong);
+}
+
+.bottom {
+  padding-top: var(--space-5);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+  color: var(--color-text-faint);
 }

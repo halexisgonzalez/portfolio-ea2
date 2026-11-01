@@ -27,6 +27,7 @@ export function Projects() {
     <section className="section">
       <div className="container">
         <div className={styles.header}>
+          <span className="eyebrow">Trabajos finales</span>
           <h1>Proyectos</h1>
           <p className="text-muted">
             Explorá los Trabajos Finales Integradores de Electrónica Aplicada II

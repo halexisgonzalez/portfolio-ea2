@@ -18,6 +18,7 @@ export function Students() {
     <section className="section">
       <div className="container">
         <div className={styles.header}>
+          <span className="eyebrow">Autores</span>
           <h1>Estudiantes</h1>
           <p className="text-muted">
             Conocé a los estudiantes que formaron parte de las distintas

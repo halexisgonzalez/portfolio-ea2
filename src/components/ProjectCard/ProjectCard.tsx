@@ -19,12 +19,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {project.image ? (
           <img src={project.image} alt="" loading="lazy" />
         ) : (
-          <span className={styles.placeholder} aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="32" height="32">
+          <span className={`bg-grid ${styles.placeholder}`} aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="44" height="44">
               <path
-                fill="currentColor"
-                d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Zm1 2v10h14V7Zm2.5 8 3-3.5 2 2 3-4 3.5 5.5Z"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                d="M7 5h10a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm2 0V2m3 3V2m3 3V2M9 22v-3m3 3v-3m3 3v-3M5 9H2m3 3H2m3 3H2m20-6h-3m3 3h-3m3 3h-3"
               />
+              <circle cx="8.5" cy="8.5" r="1" fill="currentColor" />
             </svg>
           </span>
         )}

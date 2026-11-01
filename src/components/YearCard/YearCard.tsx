@@ -11,7 +11,7 @@ interface YearCardProps {
 
 export function YearCard({ year, studentCount, projectCount, materialUrl }: YearCardProps) {
   return (
-    <article className={`card card-hoverable ${styles.card}`}>
+    <article className={`card card-hoverable ${styles.card}`} data-year={year}>
       <Link to={`/years/${year}`} className={styles.link}>
         <span className={styles.year}>{year}</span>
         <div className={styles.stats}>
